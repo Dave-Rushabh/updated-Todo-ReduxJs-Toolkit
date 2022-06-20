@@ -13,7 +13,7 @@ const todoSlice = createSlice({
     },
     remove_Todo: (state, action) => {
       const { todoList } = state;
-      const id = action.payload;
+      const { id } = action.payload;
 
       const newArr = todoList.filter((item) => item.id !== id);
       state.todoList = newArr;

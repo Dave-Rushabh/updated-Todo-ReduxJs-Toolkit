@@ -12,8 +12,9 @@ const TodoViewer = () => {
   const completedTodo = useSelector((state) => state.todoReducer.completedTodo);
   const dispatch = useDispatch();
 
-  const handleDelete = (id) => {
-    dispatch(remove_Todo(id));
+  const handleDelete = (todo) => {
+    dispatch(remove_Todo(todo));
+    dispatch(remove_CompletedTodo(todo));
   };
 
   const handleCheckbox = (e, todo) => {
@@ -38,7 +39,7 @@ const TodoViewer = () => {
           <div key={todo.id}>
             <span>{`${todo.id}.)`}</span> {todo.todo}
             <span style={{ marginLeft: "20px" }}>
-              <button onClick={() => handleDelete(todo.id)}>Delete</button>
+              <button onClick={() => handleDelete(todo)}>Delete</button>
             </span>
             <span style={{ marginLeft: "20px" }}>
               <input
